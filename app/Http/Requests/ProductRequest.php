@@ -21,6 +21,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'titulo' => 'Se requiere',
+            'titulo.rada' => 'No dijiste la palabra magica',
             'descripcion.required' => 'Se requiere :attribute',
         ];
     }
@@ -33,7 +34,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|string',
+            'titulo' => 'required|string|rada:mes,otro',
             'descripcion' => 'nullable|string',
             'product_type_id' => 'nullable|exists:product_types,id'
         ];

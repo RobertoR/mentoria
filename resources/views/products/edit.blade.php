@@ -1,7 +1,4 @@
 @extends('layouts.app')
-@foreach($errors->all() as $error)
-    <p>{{ $error }}</p>
-@endforeach
 @section('content')
     <div class="container">
         <div class="row">
@@ -16,12 +13,12 @@
                                 <label for="">Título</label><br>
                                 <input type="text" name="titulo" value="{{ $product->titulo }}"><br>
                                 @if($errors->has('titulo'))
-                                    {{ $errors->first('titulo') }}
+                                    {{ $errors->first('titulo') }}<br>
                                 @endif
                                 <label for="">Descripción</label><br>
                                 <textarea name="descripcion">{{ $product->descripcion }}</textarea><br>
                                 @if($errors->has('descripcion'))
-                                    {{ $errors->first('descripcion') }}
+                                    {{ $errors->first('descripcion') }}<br>
                                 @endif
                                 <label for="">Tipo</label><br>
                                 <select name="product_type_id" ><br>

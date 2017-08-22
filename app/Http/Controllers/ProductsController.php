@@ -104,7 +104,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         /*
          * Mediante una inyeccion de dependencia se manda llamar la clase ProductRequest con el objetivo de validar la

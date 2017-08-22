@@ -61,6 +61,12 @@ Route::get('/home', 'HomeController@index')->name('home');
     PUT/PATCH	/products/{photo}	        update	    products.update     -   Update the changes
     DELETE	    /products/{photo}	        destroy	    products.destroy    -   Destroy the record
  */
-Route::resource('/products','ProductsController');
+Route::middleware('role:admin')->resource('/products','ProductsController');
+
+//Route::get('/products','ProductsController@index')->middleware('role');
 
 //Route::put('products/{id}/{param2}');
+
+
+Route::put('detail/{id}','DetailController@update')->name('detail.update');
+Route::get('detail','DetailController@index')->name('detail');

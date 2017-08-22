@@ -21,11 +21,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         Product::create([
             'product_type_id' => 1,
-            'titulo' => 'SSD ADATA 250GB'
+            'titulo' => 'SSD ADATA 250GB',
+            'price' => 230.00
         ]);
         Product::create([
             'product_type_id' => 2,
-            'titulo' => 'HP 27"'
+            'titulo' => 'HP 27"',
+            'price' => 250.00
         ]);
     }
 }
