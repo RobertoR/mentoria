@@ -16,7 +16,7 @@
                                     {{ $errors->first('titulo') }}<br>
                                 @endif
                                 <label for="">Descripción</label><br>
-                                <textarea name="descripcion">{{ $product->descripcion }}</textarea><br>
+                                <textarea name="descripcion">{{ old('descripcion',$product->descripcion) }}</textarea><br>
                                 @if($errors->has('descripcion'))
                                     {{ $errors->first('descripcion') }}<br>
                                 @endif

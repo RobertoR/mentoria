@@ -70,3 +70,14 @@ Route::middleware('role:admin')->resource('/products','ProductsController');
 
 Route::put('detail/{id}','DetailController@update')->name('detail.update');
 Route::get('detail','DetailController@index')->name('detail');
+
+
+Route::get('fileUpload', function () {
+
+    return view('upload');
+
+});
+
+//Route::post('fileUpload', ['as'=>'fileUpload','uses'=>'Uploads@upload']);
+
+Route::post('fileUpload', 'Uploads@upload')->name('fileUpload');
