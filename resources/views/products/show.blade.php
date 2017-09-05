@@ -10,6 +10,9 @@
                         @if($product)
                         <div class="col-md-6">
                             <h3>{{ $product->titulo }}</h3>
+                            @foreach($product->images()->get() as $image)
+                            <img src="{{ '/images/'.$image->filename }}" height="200">
+                            @endforeach
                             <p>{{ $product->descripcion }}</p>
                             <a href="{{ route('products.index') }}">Regresar</a>
                             <a href="{{ route('products.edit',['id'=>$product->id]) }}">Editar</a>

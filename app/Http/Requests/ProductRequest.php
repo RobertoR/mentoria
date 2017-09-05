@@ -34,9 +34,10 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|string|rada:mes,otro',
+            'titulo' => 'required|string',
             'descripcion' => 'nullable|string',
-            'product_type_id' => 'nullable|exists:product_types,id'
+            'product_type_id' => 'nullable|exists:product_types,id',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

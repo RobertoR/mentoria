@@ -72,11 +72,11 @@ Route::put('detail/{id}','DetailController@update')->name('detail.update');
 Route::get('detail','DetailController@index')->name('detail');
 
 
-Route::get('fileUpload', function () {
+Route::get('fileUpload/{id}', function ($id) {
 
-    return view('upload');
+    return view('upload',['id'=> $id]);
 
-});
+})->name('update.image');
 
 //Route::post('fileUpload', ['as'=>'fileUpload','uses'=>'Uploads@upload']);
 

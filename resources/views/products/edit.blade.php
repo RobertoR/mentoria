@@ -7,14 +7,20 @@
                     <div class="panel-heading">Detalle</div>
                     <div class="panel-body">
                         <div class="col-md-6">
-                            <form action="{{ route('products.update',['id'=>$product->id]) }}" method="post">
+                            <form action="{{ route('products.update',['id'=>$product->id]) }}" method="post" enctype="multipart/form-data">
                                 {{ method_field('PUT') }}
                                 {{ csrf_field() }}
+                                {!! Form::file('image', array('class' => 'image')) !!}
                                 <label for="">Título</label><br>
                                 <input type="text" name="titulo" value="{{ $product->titulo }}"><br>
                                 @if($errors->has('titulo'))
                                     {{ $errors->first('titulo') }}<br>
                                 @endif
+                                 @foreach($product->images()->get() as $image)
+                                    <a href="{{ route('update.image',['id'=>$image->id]) }}">
+                                    <img src="{{ '/images/'.$image->filename }}" height="200">
+                                    </a>
+                                @endforeach
                                 <label for="">Descripción</label><br>
                                 <textarea name="descripcion">{{ old('descripcion',$product->descripcion) }}</textarea><br>
                                 @if($errors->has('descripcion'))

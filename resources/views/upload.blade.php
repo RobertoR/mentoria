@@ -24,7 +24,7 @@
 {!! Form::open(array('route' => 'fileUpload','enctype' => 'multipart/form-data', 'class' => 'pl')) !!}
 
 <div class="row cancel">
-
+    <input type="hidden" name="id" value="{{ $id }}">
     <div class="col-md-4">
 
         {!! Form::file('image', array('class' => 'image')) !!}

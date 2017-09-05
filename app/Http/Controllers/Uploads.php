@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Image;
 
 class Uploads extends Controller
 {
@@ -11,11 +12,12 @@ class Uploads extends Controller
 	{
 
 	    $this->validate($request, [
-
+	    	'id' => 'required|integer|exists:images,id',
 	        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 	    ]);
 
+	    $imageFile = Image::find($request->get('id'));
 
 	    $image = $request->file('image');
 
@@ -23,10 +25,14 @@ class Uploads extends Controller
 
 	    $destinationPath = public_path('/images');
 
-	    $image->move($destinationPath, $input['imagename']);
-	  
+	    $moved = $image->move($destinationPath, $input['imagename']);
+	  	
+	  	if($moved){	  		
+	  		$imageFile->filename = $input['imagename'];
+	  		$imageFile->save();
+	  	}
 
-	    return back()->with('success','Image Upload successful');
+	    return redirect()->route('products.edit',['id'=> $imageFile->product_id]);
 
 	}
 }

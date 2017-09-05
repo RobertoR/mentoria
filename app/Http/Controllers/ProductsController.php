@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
  */
 use App\Product;
 use App\ProductType;
+use App\Image;
 /*
  * La creación de un controlador es posible desde la consola mediante el comando "php artisan make:controller Productscontroller --resource"
  * e indicando mediante una bandera si este se convertira en un controlador recurso
@@ -79,6 +80,7 @@ class ProductsController extends Controller
          */
         $product = Product::find($id);
         $data['product'] = $product;
+        //dd($product->images()->get()->toArray());
         return view('products.show',$data);
     }
 
@@ -94,6 +96,7 @@ class ProductsController extends Controller
         $types = ProductType::all();
         $data['types'] = $types;
         $data['product'] = $product;
+
         return view('products.edit',$data);
     }
 
@@ -126,6 +129,19 @@ class ProductsController extends Controller
         $product->titulo = $request->get('titulo');
         $product->descripcion = $request->get('descripcion');
         $product->product_type_id = $request->get('product_type_id');
+        /*
+            
+        */
+        $image = $request->file('image');
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images');
+        $moved = $image->move($destinationPath, $input['imagename']);
+        if($moved){
+            $imageProduct = new Image;
+            $imageProduct->product_id = $id;
+            $imageProduct->filename = $input['imagename'];
+            $imageProduct->save();
+        }
         /*
          * Eloquent a traves del metodo save almacenara la informacion distinguiendo en caso de insercion o actualizacion
          */
