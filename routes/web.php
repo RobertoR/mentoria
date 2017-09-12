@@ -81,3 +81,5 @@ Route::get('fileUpload/{id}', function ($id) {
 //Route::post('fileUpload', ['as'=>'fileUpload','uses'=>'Uploads@upload']);
 
 Route::post('fileUpload', 'Uploads@upload')->name('fileUpload');
+
+Route::resource('charges','ChargesController');

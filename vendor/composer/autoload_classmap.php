@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Charge' => $baseDir . '/app/Charge.php',
+    'App\\Charge_payment' => $baseDir . '/app/Charge_payment.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Detail' => $baseDir . '/app/Detail.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -30,6 +32,7 @@ return array(
     'App\\Http\\Requests\\DetailRequest' => $baseDir . '/app/Http/Requests/DetailRequest.php',
     'App\\Http\\Requests\\ProductRequest' => $baseDir . '/app/Http/Requests/ProductRequest.php',
     'App\\Image' => $baseDir . '/app/Image.php',
+    'App\\Payment' => $baseDir . '/app/Payment.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\ProductType' => $baseDir . '/app/ProductType.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -50,9 +53,12 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
+    'CreateChargePaymentsTable' => $baseDir . '/database/migrations/2017_09_12_152026_create_charge_payments_table.php',
+    'CreateChargesTable' => $baseDir . '/database/migrations/2017_09_12_151957_create_charges_table.php',
     'CreateDetailsTable' => $baseDir . '/database/migrations/2017_08_08_151519_create_details_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2017_09_05_151121_create_images_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePaymentsTable' => $baseDir . '/database/migrations/2017_09_12_152010_create_payments_table.php',
     'CreateProductTypesTable' => $baseDir . '/database/migrations/2017_07_25_151122_create_product_types_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2017_07_11_154439_create_products_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2017_08_15_150627_create_roles_table.php',

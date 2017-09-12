@@ -278,6 +278,8 @@ class ComposerStaticInitbf143bc2e53cecc06153e8e3f68c4c9e
     );
 
     public static $classMap = array (
+        'App\\Charge' => __DIR__ . '/../..' . '/app/Charge.php',
+        'App\\Charge_payment' => __DIR__ . '/../..' . '/app/Charge_payment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Detail' => __DIR__ . '/../..' . '/app/Detail.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -302,6 +304,7 @@ class ComposerStaticInitbf143bc2e53cecc06153e8e3f68c4c9e
         'App\\Http\\Requests\\DetailRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DetailRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
+        'App\\Payment' => __DIR__ . '/../..' . '/app/Payment.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\ProductType' => __DIR__ . '/../..' . '/app/ProductType.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -322,9 +325,12 @@ class ComposerStaticInitbf143bc2e53cecc06153e8e3f68c4c9e
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CreateChargePaymentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_152026_create_charge_payments_table.php',
+        'CreateChargesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_151957_create_charges_table.php',
         'CreateDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_08_151519_create_details_table.php',
         'CreateImagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_05_151121_create_images_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePaymentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_152010_create_payments_table.php',
         'CreateProductTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_25_151122_create_product_types_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_11_154439_create_products_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_15_150627_create_roles_table.php',
