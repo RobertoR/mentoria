@@ -16,6 +16,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/contact','ContactController@index');
+Route::get('/contact/{id}','ContactController@show');
+Route::get('/contact/{id}/edit','ContactController@edit');
+Route::put('/contact/{id}','ContactController@update')->name('contact.update');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::resource('user', 'UserController');
 /*
  * Las rutas pueden ser utilizadas como, donde en $callback es posible indicar la especifica funcion de un controlador o en su caso una funcion directamente
