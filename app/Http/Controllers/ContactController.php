@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
 
 class ContactController extends Controller
 {
     public function index()
     {
-    	$data['name'] = 'Jaime';
-    	$data['lastName'] = 'Carreon';    	
-        return view('contact.contact_list',$data);
+		$locals = false;    	
+    	$data['contacts'] = Contact::with('phones')->get();    	    	
+        return view('contact.contact_list',$data);	
     }
 
     public function show($id)
@@ -24,11 +25,13 @@ class ContactController extends Controller
         return view('contact.edit',$data);
     }
     public function update(Request $request,$id){
-    	$contact = Contact::find($id);
-    	$contact->name = $request->get('name');
-    	$contact->save();    	
+    	
     	return $contact;    	
     }
 
+    public function destroy($id){
+    	$contact = Contact::find($id);
+    	$contact->delete();
+    }
 
 }

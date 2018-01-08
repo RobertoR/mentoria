@@ -22,6 +22,10 @@ Route::get('/contact/{id}','ContactController@show');
 Route::get('/contact/{id}/edit','ContactController@edit');
 Route::put('/contact/{id}','ContactController@update')->name('contact.update');
 
+Route::get('/contact/{id}/delete','ContactController@destroy');
+
+Route::get('/phone/{id}/edit','PhoneController@edit')->name('phone.edit');
+Route::put('/phone/{id}/update','PhoneController@update')->name('phone.update');
 
 
 

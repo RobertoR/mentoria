@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price',10,2)->default(0.00)->nullable();            
             //Define el uso de los campos created_at & updated_at
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
