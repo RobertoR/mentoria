@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Phone;
+use App\Http\Requests\PhoneRequest;
 
 class PhoneController extends Controller
 {
@@ -69,7 +70,7 @@ class PhoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PhoneRequest $request, $id)
     {
         $record = Phone::find($id);
         $record->update($request->all());

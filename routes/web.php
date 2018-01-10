@@ -16,16 +16,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group([
+    'middleware' => [
+        'role:human',//El alias correspondiente a Roles se encuentra definido en App\Http\Kernel        
+    ]
+],function(){
 
-Route::get('/contact','ContactController@index');
-Route::get('/contact/{id}','ContactController@show');
-Route::get('/contact/{id}/edit','ContactController@edit');
-Route::put('/contact/{id}','ContactController@update')->name('contact.update');
+    Route::get('/contact','ContactController@index');
+    Route::get('/contact/{id}','ContactController@show');
+    Route::get('/contact/{id}/edit','ContactController@edit')->name('contact.edit');
+    Route::put('/contact/{id}','ContactController@update')->name('contact.update');
 
-Route::get('/contact/{id}/delete','ContactController@destroy');
+    Route::get('/contact/{id}/delete','ContactController@destroy');
 
-Route::get('/phone/{id}/edit','PhoneController@edit')->name('phone.edit');
-Route::put('/phone/{id}/update','PhoneController@update')->name('phone.update');
+    Route::get('/phone/{id}/edit','PhoneController@edit')->name('phone.edit');
+    Route::put('/phone/{id}/update','PhoneController@update')->name('phone.update');
+
+});
+
 
 
 

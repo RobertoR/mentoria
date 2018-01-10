@@ -14,7 +14,6 @@ class RadaProvider extends ServiceProvider
      */
     public function boot()
     {
-        //min:12
         Validator::extend('rada',function($attr, $val,$params,$validator){
             $success = stripos($val,'rada'.$params[0]) !== FALSE;
             if(!$success) {

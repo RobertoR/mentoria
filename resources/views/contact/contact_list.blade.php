@@ -14,12 +14,12 @@
 		<tbody>
 			@foreach($contacts as $contact)
 			<tr>
-				<td>{{ $contact->first_name }}</td>
+				<td><a href="{{ route('contact.edit', ['id' => $contact->id ])}}">{{ $contact->first_name }}</a></td>
 				<td>{{ $contact->last_name }}</td>
 				<td>
 					<ul>
 						@foreach($contact->phones as $phone)
-						<li>{{ $phone->number }}</li>
+						<li><a href="{{ route('phone.edit', ['id' => $phone->id ])}}">{{ $phone->number }}</a></li>
 						@endforeach
 					</ul>
 				</td>
