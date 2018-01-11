@@ -18,9 +18,11 @@ Route::get('/', function () {
 
 Route::group([
     'middleware' => [
-        'role:human',//El alias correspondiente a Roles se encuentra definido en App\Http\Kernel        
+        'role:admin',//El alias correspondiente a Roles se encuentra definido en App\Http\Kernel        
     ]
 ],function(){
+
+    Route::get('/contacts','ContactsAppController@index');
 
     Route::get('/contact','ContactController@index');
     Route::get('/contact/{id}','ContactController@show');

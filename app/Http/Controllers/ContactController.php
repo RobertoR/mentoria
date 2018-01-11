@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class ContactController extends Controller
 {
     public function index()
-    {
-		$locals = false;    	
-    	$data['contacts'] = Contact::with('phones')->get();    	    	
-        return view('contact.contact_list',$data);	
+    {		    	
+        $contacts = Contact::with('phones')->get();    	    	
+        return $contacts;	
     }
 
     public function show($id)
@@ -28,12 +27,11 @@ class ContactController extends Controller
         return view('contact.edit',$data);
     }
     public function update(ContactRequest $request,$id){
-        $user = $request->user();       
-        dd($user->role_id);
+        $user = $request->user();               
 
     	$contact = Contact::find($id);
     	$contact->update($request->all());
-    	return redirect()->route('contact.edit',['id' => $id]);    	
+    	return $contact;    	
     }
 
     public function destroy($id){
