@@ -3,23 +3,29 @@
 @section('content')
 <div ng-app="myApp" class="container">
 	<div ng-controller="ContactController">
-		<form >
-
+		<form ng-if="contact.id" name="contactForm" novalidate>
 			<ul>				
 				<li ng-repeat="error in errors">@{{ error }}</li>				
 			</ul>
-		<!--Reutilizacion de templates basicos y envio de argumentos-->
-	    @component('components.input_field',[
-	    	'id' => 'first_name',
-	    	'label' => 'First name',
-	    	'name' => 'first_name',    	
-	    	'value' => '',    	
-	    	'ngModel' => 'contact.first_name',
-	    ])
-	    @endcomponent
+			<!--Reutilizacion de templates basicos y envio de argumentos-->
+		    @component('components.input_field',[
+		    	'id' => 'first_name',
+		    	'label' => 'First name',
+		    	'name' => 'first_name',    	
+		    	'value' => '',    		    	
+		    	'ngModel' => 'contact.first_name',
+		    	'attrs' => 'required'
+		    ])
+		    <div class="error" ng-show="contactForm.first_name.$invalid">
+		    	<span ng-show="contactForm.first_name.$invalid">
+		    		This field is required
+		    	</span>
+		    </div>
+		    @endcomponent
 
-		<button ng-click = "updateContact()">Guardar</button>
-	</form>	
+			<button ng-click = "updateContact(contactForm)">Guardar</button>
+		</form>	
+		<br>
 		<table border="1">
 			<thead>
 				<tr>
@@ -40,7 +46,8 @@
 					</td>
 				</tr>			
 			</thead>
-		</table>
+		</table>	
+		<contact-detail></contact-detail>
 	</div>	
 </div>
 @endsection
