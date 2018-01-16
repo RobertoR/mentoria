@@ -77,7 +77,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
     <script src={{ asset('js/apps/app.js') }}></script>
+    <script src={{ asset('js/apps/contacts/app.js') }}></script>
     <script src={{ asset('js/apps/contacts/services/contactService.js') }}></script>
     <script src={{ asset('js/apps/contacts/controllers/contactController.js') }}></script>
 </body>

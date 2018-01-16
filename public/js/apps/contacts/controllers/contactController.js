@@ -1,6 +1,8 @@
-app.controller('ContactController',['$scope','$http','ContactService',ContactController]);
+app.controller('ContactController',['$scope','$http','$state','$stateParams','ContactService',ContactController]);
 
-function ContactController($scope,$http,ContactService){
+function ContactController($scope,$http,$state,$stateParams,ContactService){
+	$scope.$state = $state;
+
 	$scope.contacts = [];
 
 	$scope.contact = {};
@@ -8,7 +10,8 @@ function ContactController($scope,$http,ContactService){
 	$scope.errors = {};
 
 	$scope.editContact = function(contact){
-		$scope.contact = angular.copy(contact);		
+		$scope.contact = angular.copy(contact);			
+		$state.go('edit',{id:contact.id});
 	};
 
 	$scope.updateContact = function(contactForm){
@@ -36,7 +39,10 @@ function ContactController($scope,$http,ContactService){
 
 
 	function init(){
-		loadContacts();
+		if($state.current.name == 'list'){
+			loadContacts();
+		}
+		console.log($stateParams.id); 
 	}
 
 	init();

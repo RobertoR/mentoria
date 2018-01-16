@@ -1,0 +1,17 @@
+<form ng-if="contact.id" name="contactForm" novalidate>
+	<ul>				
+		<li ng-repeat="error in errors">{{ error }}</li>				
+	</ul>	
+    <div class="field">
+		<label for="name">Name</label><br>
+		<input type="text" name="name" id="name" value="" 
+		ng-model='contact.name'
+		required>
+		<div class="error" ng-show="contactForm.first_name.$invalid">
+	    	<span ng-show="contactForm.first_name.$invalid">
+	    		This field is required
+	    	</span>
+	    </div>
+	</div>    	   
+	<button ng-click = "updateContact(contactForm)">Guardar</button>
+</form>	

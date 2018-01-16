@@ -1,0 +1,28 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name Name</th>
+		</tr>
+	</thead>
+	<tbody>			
+		<tr ng-repeat="contact in contacts" ng-click="editContact(contact)">			
+			<!--
+				<td>
+					<a ui-sref="edit({id: contact.id})" ui-sref-active="active">
+						{{ contact.first_name }}
+					</a>    
+				</td>
+			-->
+			<td>{{ contact.first_name }}</td>
+			<td>{{ contact.last_name }}</td>
+			<td>
+				<ul>						
+					<li ng-repeat="phone in contact.phones">
+						@{{ phone.number }}
+					</li>						
+				</ul>
+			</td>
+		</tr>			
+	</thead>
+</table>

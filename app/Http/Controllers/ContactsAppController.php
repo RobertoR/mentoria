@@ -8,6 +8,7 @@ use App\Contact;
 class ContactsAppController extends Controller
 {
     public function index(){
-    	return view('contact.contact_list_a');	
+    	return view('contact.contact_list_component');	
+    	//return view('contact.contact_list_a');	
     }
 }

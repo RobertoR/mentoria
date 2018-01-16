@@ -1,4 +1,4 @@
-var app = angular.module('myApp',[]);
+var app = angular.module('myApp',['ui.router']);
 	app.directive('contactDetail', function(){		
 		return {				
 			//template:'{{ contact.first_name }}',
