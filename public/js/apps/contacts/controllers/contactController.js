@@ -1,6 +1,6 @@
-app.controller('ContactController',['$scope','$http','$state','$stateParams','ContactService',ContactController]);
+app.controller('ContactController',['$scope','$http','$state','$stateParams','ContactStore','ContactService',ContactController]);
 
-function ContactController($scope,$http,$state,$stateParams,ContactService){
+function ContactController($scope,$http,$state,$stateParams,ContactStore,ContactService){
 	$scope.$state = $state;
 
 	$scope.contacts = [];
@@ -10,7 +10,8 @@ function ContactController($scope,$http,$state,$stateParams,ContactService){
 	$scope.errors = {};
 
 	$scope.editContact = function(contact){
-		$scope.contact = angular.copy(contact);			
+		$scope.contact = angular.copy(contact);	
+		ContactStore.setContact($scope.contact);		
 		$state.go('edit',{id:contact.id});
 	};
 
@@ -22,6 +23,8 @@ function ContactController($scope,$http,$state,$stateParams,ContactService){
 			.then(function(response){
 				$scope.contact = {};
 				$scope.errors = {};
+				ContactStore.setContact($scope.contact);
+				$state.go('list');
 			},function(errors){
 				console.log(errors);
 			});
@@ -34,15 +37,29 @@ function ContactController($scope,$http,$state,$stateParams,ContactService){
 			},function(errors){
 				console.log(errors);
 			});
-
 	}
 
+	function loadContact(id){
+		var contactData = ContactStore.getContact();
+		if(contactData){
+			$scope.contact = contactData;
+		}else{
+			ContactService.loadContact(id)
+				.then(function(response){				
+					$scope.contact = response;
+				},function(errors){
+					console.log(errors);
+				});
+		}
+	}
 
 	function init(){
 		if($state.current.name == 'list'){
 			loadContacts();
 		}
-		console.log($stateParams.id); 
+		if($state.current.name == 'edit' && $stateParams.hasOwnProperty('id')){
+			loadContact($stateParams.id);
+		}		
 	}
 
 	init();

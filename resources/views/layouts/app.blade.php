@@ -81,6 +81,7 @@
     <script src={{ asset('js/apps/app.js') }}></script>
     <script src={{ asset('js/apps/contacts/app.js') }}></script>
     <script src={{ asset('js/apps/contacts/services/contactService.js') }}></script>
+    <script src={{ asset('js/apps/contacts/contactStore.js') }}></script>
     <script src={{ asset('js/apps/contacts/controllers/contactController.js') }}></script>
 </body>
 </html>

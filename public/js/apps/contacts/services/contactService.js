@@ -11,7 +11,6 @@ function ContactService($http,$q){
 
 	}
 
-
 	service.loadContacts = function(){
 		var deferred = $q.defer();
 		$http
@@ -28,6 +27,18 @@ function ContactService($http,$q){
 		var deferred = $q.defer();		
 		$http
 			.put('contact/' + contact.id,contact)
+			.then(function(response){
+				deferred.resolve(response.data);
+			},function(error){
+				deferred.reject(error);
+			});
+		return deferred.promise;
+	}
+
+	service.loadContact = function(id){
+		var deferred = $q.defer();		
+		$http
+			.get('contact/' + id)
 			.then(function(response){
 				deferred.resolve(response.data);
 			},function(error){

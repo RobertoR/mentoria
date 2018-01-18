@@ -17,7 +17,8 @@ class ContactController extends Controller
 
     public function show($id)
     {    	
-        return $id;
+        $contact = Contact::find($id);
+        return $contact;
     }
 
     public function edit($id)
