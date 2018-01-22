@@ -1,3 +1,4 @@
+<a ui-sref="list"  ng-click = "addContact();">New contactx</a>
 <table border="1">
 	<thead>
 		<tr>
@@ -5,7 +6,7 @@
 			<th>Last Name Name</th>
 		</tr>
 	</thead>
-	<tbody>			
+	<tbody >			
 		<tr ng-repeat="contact in contacts" ng-click="editContact(contact)">			
 			<!--
 				<td>
@@ -24,5 +25,36 @@
 				</ul>
 			</td>
 		</tr>			
-	</thead>
+	</tbody>
+	
+
+	<div>
+		<form ng-submit='insertContact' name='newContactForm'>
+			<table>
+			<tr>
+				<td>First name</td>
+				<td>Last name</td>
+				<td>Phone</td>
+			</tr>
+			<tr>
+				<td>
+					<input name='new-contact-name'/>
+				</td>
+				<td>
+					<input name='new-contact-lastname'/>
+				</td>
+				<td>
+					<input name='new-contact-phone'/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type='submit' value='Guardar' ng-click='insertContact()'/>
+				</td>
+			</tr>
+			</table>
+		</form>
+	</div>
+
+
 </table>

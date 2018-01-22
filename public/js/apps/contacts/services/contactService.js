@@ -47,5 +47,20 @@ function ContactService($http,$q){
 		return deferred.promise;
 	}
 
+	service.insertContact = function(form){
+		
+		var deferred = $q.defer();		
+		$http
+			.post('contact/new',form)
+			.then(function(response){
+				deferred.resolve(response.data);
+			},function(error){
+				deferred.reject(error);
+			});
+		return deferred.promise;
+	}
+
+
+
 	return service;
 }

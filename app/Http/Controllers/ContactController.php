@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use App\Phone;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,5 +40,23 @@ class ContactController extends Controller
     	$contact = Contact::find($id);
     	$contact->delete();
     }
+
+    public function store()
+    {
+        $contact = new Contact;
+        $contac->first_name       = Input::get('new-contact-name');
+        $contac->last_name       = Input::get('new-contact-lastname');
+
+        $contact->save();
+        $phone = new Phone;
+
+        $phone->number = Input::get('new-contact-phone');
+
+        $contact->phone()->save($phone);
+
+
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
-app.controller('ContactController',['$scope','$http','$state','$stateParams','ContactStore','ContactService',ContactController]);
+app.controller('ContactController',['$scope','$http','$state','$stateParams','ContactStore','ContactService','$sce',ContactController]);
 
-function ContactController($scope,$http,$state,$stateParams,ContactStore,ContactService){
+function ContactController($scope,$http,$state,$stateParams,ContactStore,ContactService,$sce){
 	$scope.$state = $state;
 
 	$scope.contacts = [];
@@ -29,6 +29,33 @@ function ContactController($scope,$http,$state,$stateParams,ContactStore,Contact
 				console.log(errors);
 			});
 	};
+	/*$scope.addContact = function(){
+		var htmlContact;
+		htmlContact = "<div><form  name='newContactForm'><table>"+
+		"<tr><td>First name</td><td>Last name</td><td>Phone</td></tr>"+
+		"<tr>"+
+		"<td><input name='new-contact-name'/></td>"+
+		"<td><input name='new-contact-lastname'/></td>"+
+		"<td><input name='new-contact-phone'/></td>"+
+		"</tr>"+
+		"<tr><td><input type='submit' value='Guardar' ng-click='insertContact()'></td></tr>"+
+		"</table></form></div>";
+		$scope.contactsTable = $sce.trustAsHtml(htmlContact);
+	};*/
+	
+	$scope.insertContact = function(){
+			console.log("hola");
+			return false;
+			ContactService.insertContact(contactForm)
+			.then(function(response){
+				$scope.contact = {};
+				$scope.errors = {};
+				
+				
+			},function(errors){
+				console.log(errors);
+			});
+	}
 
 	function loadContacts(){		
 		ContactService.loadContacts()

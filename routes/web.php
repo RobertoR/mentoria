@@ -33,6 +33,7 @@ Route::group([
 
     Route::get('/phone/{id}/edit','PhoneController@edit')->name('phone.edit');
     Route::put('/phone/{id}/update','PhoneController@update')->name('phone.update');
+    Route::post('/contact/new','ContactController@store');
 
 });
 
