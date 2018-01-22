@@ -47,11 +47,11 @@ function ContactService($http,$q){
 		return deferred.promise;
 	}
 
-	service.insertContact = function(form){
+	service.insertContact = function(formdata){
 		
 		var deferred = $q.defer();		
 		$http
-			.post('contact/new',form)
+			.post('contact/new',formdata)
 			.then(function(response){
 				deferred.resolve(response.data);
 			},function(error){

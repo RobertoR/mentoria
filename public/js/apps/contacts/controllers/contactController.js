@@ -8,6 +8,7 @@ function ContactController($scope,$http,$state,$stateParams,ContactStore,Contact
 	$scope.contact = {};
 
 	$scope.errors = {};
+	$scope.hideForm = true;
 
 	$scope.editContact = function(contact){
 		$scope.contact = angular.copy(contact);	
@@ -29,24 +30,21 @@ function ContactController($scope,$http,$state,$stateParams,ContactStore,Contact
 				console.log(errors);
 			});
 	};
-	/*$scope.addContact = function(){
-		var htmlContact;
-		htmlContact = "<div><form  name='newContactForm'><table>"+
-		"<tr><td>First name</td><td>Last name</td><td>Phone</td></tr>"+
-		"<tr>"+
-		"<td><input name='new-contact-name'/></td>"+
-		"<td><input name='new-contact-lastname'/></td>"+
-		"<td><input name='new-contact-phone'/></td>"+
-		"</tr>"+
-		"<tr><td><input type='submit' value='Guardar' ng-click='insertContact()'></td></tr>"+
-		"</table></form></div>";
-		$scope.contactsTable = $sce.trustAsHtml(htmlContact);
-	};*/
+	$scope.showForm = function(){
+		var form;
+		form = document.getElementById('formContainer');
+		if (form.classList.contains('hidden')) {
+			document.getElementById('formContainer').classList.remove('hidden');
+		}
+		else{
+			document.getElementById('formContainer').classList.add('hidden');	
+		}
+	};
 	
 	$scope.insertContact = function(){
-			console.log("hola");
-			return false;
-			ContactService.insertContact(contactForm)
+			
+			
+			ContactService.insertContact($scope.contact)
 			.then(function(response){
 				$scope.contact = {};
 				$scope.errors = {};

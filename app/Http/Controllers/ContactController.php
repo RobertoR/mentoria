@@ -41,9 +41,13 @@ class ContactController extends Controller
     	$contact->delete();
     }
 
-    public function store()
+    public function store(ContactRequest $request)
     {
         $contact = new Contact;
+        $contact->create($request->all());
+                
+
+        /*$contact = new Contact;
         $contac->first_name       = Input::get('new-contact-name');
         $contac->last_name       = Input::get('new-contact-lastname');
 
@@ -52,7 +56,7 @@ class ContactController extends Controller
 
         $phone->number = Input::get('new-contact-phone');
 
-        $contact->phone()->save($phone);
+        $contact->phone()->save($phone);*/
 
 
     }

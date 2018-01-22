@@ -1,4 +1,4 @@
-<a ui-sref="list"  ng-click = "addContact();">New contactx</a>
+<a ui-sref="list"  ng-click = "showForm();">New contactx</a>
 <table border="1">
 	<thead>
 		<tr>
@@ -26,10 +26,10 @@
 			</td>
 		</tr>			
 	</tbody>
-	
+</table>
 
-	<div>
-		<form ng-submit='insertContact' name='newContactForm'>
+<div id="formContainer" class="hidden">
+		<form>
 			<table>
 			<tr>
 				<td>First name</td>
@@ -38,23 +38,26 @@
 			</tr>
 			<tr>
 				<td>
-					<input name='new-contact-name'/>
+					<input name='first_name' ng-model="contact.first_name"/>
 				</td>
 				<td>
-					<input name='new-contact-lastname'/>
+					<input name='last_name' ng-model="contact.last_name"/>
 				</td>
 				<td>
-					<input name='new-contact-phone'/>
+					<input name='number' ng-model="contact.number"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type='submit' value='Guardar' ng-click='insertContact()'/>
+					<input type='submit' value='Guardarx' ng-click='insertContact()'/>
 				</td>
 			</tr>
 			</table>
+			
+			<tr>
+				<td>
+					{{ csrf_field() }}
+				</td>
+			</tr>
 		</form>
 	</div>
-
-
-</table>
