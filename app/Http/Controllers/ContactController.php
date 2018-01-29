@@ -43,22 +43,10 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
-        $contact = new Contact;
-        $contact->create($request->all());
-                
-
-        /*$contact = new Contact;
-        $contac->first_name       = Input::get('new-contact-name');
-        $contac->last_name       = Input::get('new-contact-lastname');
-
+        $contact = new Contact($request->all());
         $contact->save();
-        $phone = new Phone;
-
-        $phone->number = Input::get('new-contact-phone');
-
-        $contact->phone()->save($phone);*/
-
-
+        $phone = new Phone($request->only("number")); 
+        $contact->phones()->save($phone);
     }
 
 
